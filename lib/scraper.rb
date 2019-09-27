@@ -14,10 +14,11 @@ class Scraper
   end 
   
   def make_courses
+  self.get_courses.map do |courses|
   course = Course.new 
-  course.title = self.get_courses.css("article h2")
-  course.schedule = self.get_courses.css("article em.date")
-  course.description = self.get_courses.css("article p")
+  course.title = courses.get_courses.css("article h2")
+  course.schedule = courses.get_courses.css("article em.date")
+  course.description = courses.get_courses.css("article p")
   end 
   
   def print_courses

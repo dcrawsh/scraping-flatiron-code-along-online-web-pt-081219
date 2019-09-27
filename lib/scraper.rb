@@ -16,9 +16,9 @@ class Scraper
   def make_courses
   self.get_courses.map do |courses|
   course = Course.new 
-  course.title = courses.css("article h2")
-  course.schedule = courses.css("article em.date")
-  course.description = courses.css("article p")
+  course.title = courses.css("article h2").text
+  course.schedule = courses.css("article em.date").text
+  course.description = courses.css("article p").text
   end 
 end 
   
